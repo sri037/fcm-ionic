@@ -3,6 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FCM } from '@ionic-native/fcm';
+import { ToastController } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
 @Component({
@@ -14,6 +15,7 @@ export class MyApp {
   constructor(platform: Platform,
               statusBar: StatusBar,
               splashScreen: SplashScreen,
+              private toastCtrl: ToastController,
               private fcm: FCM) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -25,11 +27,13 @@ export class MyApp {
         console.log('token',token);
       });
 
-      this.fcm.onNotification().subscribe(data => {
-        if(data.wasTapped){
-          console.log('Received in background',data);
+      this.fcm.onNotification().subscribe(notification => {
+        console.log(JSON.stringify(notification));
+        if(notification.wasTapped){
+          console.log('Received in background',notification);
         } else {
-          console.log('Received in foreground',data);
+          this.presentToast(notification.body);
+          console.log('Received in foreground',notification);
         };
       });
 
@@ -37,6 +41,20 @@ export class MyApp {
         console.log(token);
       });
     });
+  }
+
+  presentToast(message) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 }
 
