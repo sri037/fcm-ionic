@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "130552209531",
+    "firebase_url": "https://pwasanky.firebaseio.com",
+    "project_id": "pwasanky",
+    "storage_bucket": "pwasanky.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130552209531:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130552209531-1ri53tutq1q1ujrr2obaqnmlig0u1ggm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRVjTYCQPhBYrvBOD7B7mgImlX1_YTVak"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
